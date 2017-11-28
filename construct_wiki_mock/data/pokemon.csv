@@ -1,0 +1,11 @@
+"name"	"meta-contruct"	"definition"	"reference"	"target_population"	"field"	"military"	"type"	"validated"
+"Pikachu"	"Pichu"	"Whenever Pikachu comes across something new, it blasts it with a jolt of electricity. If you come across a blackened berry, it's evidence that this Pokémon mistook the intensity of its charge.
+"	"#025"		"mouse"		"electric"	
+"Pichu"		"Pichu charges itself with electricity more easily on days with thunderclouds or when the air is very dry. You can hear the crackling of static electricity coming off this Pokémon.
+"	"#172"		"tiny mouse"		"electric"	
+"Raichu"	"Pikachu"	"If the electrical sacs become excessively charged, Raichu plants its tail in the ground and discharges. Scorched patches of ground will be found near this Pokémon's nest."	"#026"		"mouse"		"electic"	
+"Eevee"		"Eevee has an unstable genetic makeup that suddenly mutates due to the environment in which it lives. Radiation from various stones causes this Pokémon to evolve."	"#133"	"fighting"	"evolution"		"normal"	
+"Vaporeon"	"Eevee"	"Vaporeon underwent a spontaneous mutation and grew fins and gills that allow it to live underwater. This Pokémon has the ability to freely control water."	"#134"	"electric,grass"	"bubble jet"		"water"	
+"Jolteon"	"Eevee"	"Jolteon's cells generate a low level of electricity. This power is amplified by the static electricity of its fur, enabling the Pokémon to drop thunderbolts. The bristling fur is made of electrically charged needles.
+"	"#135"	"ground"	"electric"		"lightning"	
+"Flareon"	"Eevee"	"Flareon's fluffy fur has a functional purpose—it releases heat into the air so that its body does not get excessively hot. This Pokémon's body temperature can rise to a maximum of 1,650 degrees Fahrenheit."	"#136"	"ground,rocker,water"	"flame"		"fire"	
