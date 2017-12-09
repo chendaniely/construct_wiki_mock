@@ -1,10 +1,10 @@
 rm(list = ls())
 
 library(shiny)
-library(data.tree)
-library(networkD3)
+#library(data.tree)
+#library(networkD3)
 library(DT)
-library(igraph)
+#library(igraph)
 library(visNetwork)
 library(dplyr)
 library(stringr)
