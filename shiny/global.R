@@ -17,7 +17,7 @@ strwrap_br <- function(input_string, width=79, br = '<br>') {
 
 # setwd("~/git/hub/construct_wiki/shiny")
 
-pokemon <- read.csv('data/pokemon.csv', stringsAsFactors = FALSE)
+read.csv('data/pokemon.csv', sep = '\t', stringsAsFactors = FALSE)
 constructs <- read.csv('data/ari2/original/construct_data.tsv', sep = '\t', stringsAsFactors = FALSE)
 
 # def_strwrap <- sapply(constructs$Construct.definition..verbatim., strwrap)
