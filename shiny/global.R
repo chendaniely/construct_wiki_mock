@@ -9,12 +9,21 @@ library(visNetwork)
 library(dplyr)
 library(stringr)
 
+strwrap_br <- function(input_string, width=79, br = '<br>') {
+    wrapped <- sapply(input_string, strwrap, width = width)
+    wrapped <- unlist(lapply(wrapped, paste0, collapse = br))
+    return(wrapped)
+}
+
 # setwd("~/git/hub/construct_wiki/shiny")
 
+pokemon <- read.csv('data/pokemon.csv', stringsAsFactors = FALSE)
 constructs <- read.csv('data/ari2/original/construct_data.tsv', sep = '\t', stringsAsFactors = FALSE)
 
-def_strwrap <- sapply(constructs$Construct.definition..verbatim., strwrap)
-constructs$defs_wraped <- unlist(lapply(def_strwrap, paste0, collapse = '<br>'))
+# def_strwrap <- sapply(constructs$Construct.definition..verbatim., strwrap)
+# constructs$defs_wraped <- unlist(lapply(def_strwrap, paste0, collapse = '<br>'))
+
+constructs$defs_wraped <- strwrap_br(constructs$Construct.definition..verbatim.)
 
 edge_list <- constructs[, c(3, 2)]
 names(edge_list) <- c('from', 'to')
@@ -24,7 +33,7 @@ nodes <- data.frame('id' = unique(c(unique(edge_list$from),
                                       unique(edge_list$to))),
                     stringsAsFactors = FALSE)
 
-nodes$label <- str_to_title(nodes$id)
+nodes$label <- strwrap_br(str_to_title(nodes$id), width = 15, br = '\n')
 
 multi_defs <- constructs %>%
     group_by_("Name.of.construct.determinant") %>%
@@ -57,8 +66,11 @@ nodes_def_ge1$definition <- sapply(X = as.character(nodes_def_ge1$id), combine_d
 
 nodes <- rbind(nodes_def_eq1, nodes_def_ge1)
 
-
-
 nodes$title <- paste0("<p><b>", nodes$label, "</b></p><br>", nodes$definition)
 
-visNetwork(nodes, edge_list, width = "100%")
+visNetwork(nodes, edge_list, width = '100%', height = "1000px") %>%
+visEdges(arrows = "to") %>%
+    visOptions(manipulation = TRUE,
+               collapse = TRUE) %>%
+    visLayout(randomSeed = 42)
+
