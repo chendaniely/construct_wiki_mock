@@ -21,13 +21,10 @@ constructs <- read_delim('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2imO
                                        'bibtex', 'field', 'military', 'population',
                                        'measurement', 'instrument', 'notes'))
 
-print(head(constructs))
 construct_values <- constructs$construct
 names(construct_values) <- str_to_title(construct_values)
 
 network_dfs <- .GlobalEnv$clean_network_df(constructs)
-
-print(network_dfs)
 
 G <- igraph::graph_from_data_frame(network_dfs$edges)
 
