@@ -1,8 +1,5 @@
 clean_network_df <- function(df) {
-    constructs <- df
-
-    # def_strwrap <- sapply(constructs$Construct.definition..verbatim., strwrap)
-    # constructs$defs_wraped <- unlist(lapply(def_strwrap, paste0, collapse = '<br>'))
+    constructs <- df  ## I just didn't want to find/replace my original code
 
     constructs$defs_wraped <- .GlobalEnv$strwrap_br(constructs$definition)
 
@@ -24,9 +21,11 @@ clean_network_df <- function(df) {
     nodes_def_eq1 <- nodes[!nodes$id %in% multi_defs$construct, ]
     nodes_def_ge1 <- nodes[nodes$id %in% multi_defs$construct, ]
 
+    to_merge <- constructs[, c("construct",
+                               "defs_wraped")]
+
     nodes_def_eq1 <- merge(x = nodes_def_eq1,
-                           y = constructs[, c("construct",
-                                              "defs_wraped")],
+                           y = to_merge,
                            by.x = 'id',
                            by.y = "construct",
                            all.x = TRUE)[, c("id", "label", "defs_wraped")]

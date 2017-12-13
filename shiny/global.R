@@ -6,10 +6,13 @@ library(dplyr)
 library(stringr)
 library(igraph)
 
-# use this when running locally
-# setwd("~/git/hub/construct_wiki/shiny")
+if (interactive()) {
+    base_dir <- 'shiny/'
+} else {
+    base_dir <- './'
+}
 
-fxns <- list.files('functions', full.names = TRUE)
+fxns <- list.files(normalizePath(paste0(base_dir, 'functions')), full.names = TRUE)
 sapply(fxns, source, .GlobalEnv)
 
 # pokemon <- read.csv('data/pokemon.csv', sep = '\t', stringsAsFactors = FALSE)
@@ -19,7 +22,7 @@ constructs <- read_delim('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2imO
                          col_names = c('timestamp', 'email', 'construct',
                                        'meta_construct', 'definition', 'reference',
                                        'bibtex', 'field', 'military', 'population',
-                                       'measurement', 'instrument', 'notes'))
+                                       'measurement', 'instrument', 'notes', 'bibkey'))
 
 construct_values <- constructs$construct
 names(construct_values) <- str_to_title(construct_values)
