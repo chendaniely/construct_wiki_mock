@@ -44,9 +44,7 @@ shinyServer(function(input, output) {
 
             h3("Additional Notes"),
 
-            HTML(sprintf('<a href="%s" target="_blank">%s</a>',
-                         md_text$url,
-                         md_text$display_name))
+            a(md_text$display_name, href = md_text$url, target = "_blank")
         )
     })
 
