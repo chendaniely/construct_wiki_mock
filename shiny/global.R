@@ -5,6 +5,7 @@ library(visNetwork)
 library(dplyr)
 library(stringr)
 library(igraph)
+library(shinydashboard)
 
 if (interactive()) {
     base_dir <- 'shiny/'

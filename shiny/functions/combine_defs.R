@@ -17,3 +17,7 @@ combine_defs <- function(construct, df,
     html_rep <- str_replace_all(str_rep, '\\\n', '<br>')
     return(html_rep)
 }
+
+combine_values <- function(construct, df, combin_col, construct_col = 'construct') {
+    sub_df <- as.data.frame(df[df[construct_col] == construct, c(construct_col, combin_col)])
+}
