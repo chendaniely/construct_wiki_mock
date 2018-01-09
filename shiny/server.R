@@ -50,7 +50,7 @@ shinyServer(function(input, output, session) {
     output$construct_definition <- renderUI({
         # md_text <- .GlobalEnv$parse_md_a('[A document](https://drive.google.com/open?id=0B7onm2yXv1-wX2FJVkxVUUZ3a2c)')
         # print(sprintf('selected: %s', input$construct_name))
-        construct_row_dat <- .GlobalEnv$constructs[.GlobalEnv$constructs$construct == input$construct_name, ]
+        construct_row_dat <- constructs[constructs$construct == input$construct_name, ]
 
         def_count_text <- if_else(nrow(construct_row_dat) == 1,
                                   sprintf("There is %s definition for this construct", nrow(construct_row_dat)),
