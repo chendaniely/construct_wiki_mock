@@ -61,7 +61,7 @@ shinyServer(function(input, output, session) {
     })
 
     output$construct_dt <- DT::renderDataTable({
-        .GlobalEnv$constructs
+        constructs
     }, options = list(pageLength = nrow(.GlobalEnv$constructs),
                       lengthMenu = c(5, 10, 15, 20, 50, 100, nrow(.GlobalEnv$constructs)),
                       colReorder = TRUE,
