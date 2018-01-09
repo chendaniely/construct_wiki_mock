@@ -35,7 +35,7 @@ dashboardPage(
                      h1("Construct Definitions"),
                      p(paste("Here you can select a specific construct and see the definition and more details.",
                              sep = ' ')),
-                     selectizeInput('construct_name', 'Construct Name', sort(.GlobalEnv$construct_values)),
+                     uiOutput('construction_selection'),
                      uiOutput('construct_definition')
             ),
             tabPanel("Data",

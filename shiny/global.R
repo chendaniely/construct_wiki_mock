@@ -8,7 +8,7 @@ library(igraph)
 library(shinydashboard)
 
 if (interactive()) {
-    base_dir <- 'shiny/'
+    base_dir <- './'
 } else {
     base_dir <- './'
 }

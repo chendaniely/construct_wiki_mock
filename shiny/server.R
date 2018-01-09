@@ -47,6 +47,10 @@ shinyServer(function(input, output, session) {
             visLayout(randomSeed = 42)
     })
 
+    output$construction_selection <- renderUI({
+        selectizeInput('construct_name', 'Construct Name', sort(construct_values))
+    })
+
     output$construct_definition <- renderUI({
         # md_text <- .GlobalEnv$parse_md_a('[A document](https://drive.google.com/open?id=0B7onm2yXv1-wX2FJVkxVUUZ3a2c)')
         # print(sprintf('selected: %s', input$construct_name))
@@ -56,7 +60,7 @@ shinyServer(function(input, output, session) {
                                   sprintf("There is %s definition for this construct", nrow(construct_row_dat)),
                                   sprintf("There are %s definitions for this construct", nrow(construct_row_dat)))
 
-        .GlobalEnv$def_meta_boxes(construct_row_dat, def_count_text)
+        # .GlobalEnv$def_meta_boxes(construct_row_dat, def_count_text)
 
     })
 
