@@ -16,6 +16,9 @@ if (interactive()) {
 fxns <- list.files(normalizePath(paste0(base_dir, 'functions')), full.names = TRUE)
 sapply(fxns, source, .GlobalEnv)
 
+mods <- list.files(normalizePath(paste0(base_dir, 'modules')), full.names = TRUE)
+sapply(mods, source, .GlobalEnv)
+
 # pokemon <- read.csv('data/pokemon.csv', sep = '\t', stringsAsFactors = FALSE)
 constructs <- read_delim('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2imOgIzmv8ayb7rDrvVySZ0vFDGNULSGNgT5ObdXOyEEnrok-JlW4MP0jWNSJl1aP_UuKgVDsFZer/pub?gid=432933410&single=true&output=tsv',
                          delim = '\t',
