@@ -14,21 +14,9 @@ shinyServer(function(input, output, session) {
 
     constructs <- reactive({
         if (input$radio_data == ORIGINAL_DATA) {
-            read_delim(ORIGINAL_DATA,
-                       delim = '\t',
-                       skip = 1,
-                       col_names = c('timestamp', 'email', 'construct',
-                                     'meta_construct', 'definition', 'reference',
-                                     'bibtex', 'field', 'military', 'population',
-                                     'measurement', 'instrument', 'notes', 'bibkey'))
+            return(ORIGINAL_DATA_DF)
         } else if (input$radio_data == ADJUSTED_DATA) {
-            read_delim(ADJUSTED_DATA,
-                       delim = '\t',
-                       skip = 1,
-                       col_names = c('timestamp', 'email', 'construct', 'meta_construct',
-                                     'meta_construct_ori', 'definition', 'reference',
-                                     'bibtex', 'field', 'military', 'population',
-                                     'measurement', 'instrument', 'notes', 'bibkey'))
+            return(ADJUSTED_DATA_DF)
         }
     })
 
