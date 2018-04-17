@@ -27,3 +27,6 @@ ADJUSTED_DATA_DF <- read_delim(ADJUSTED_DATA,
                                              'meta_construct_ori', 'definition', 'reference',
                                              'bibtex', 'field', 'military', 'population',
                                              'measurement', 'instrument', 'notes', 'bibkey'))
+ADJUSTED_DATA_DF$construct <- stringr::str_to_lower(ADJUSTED_DATA_DF$construct)
+ADJUSTED_DATA_DF$meta_construct <- stringr::str_to_lower(ADJUSTED_DATA_DF$meta_construct)
+ADJUSTED_DATA_DF$meta_construct_ori <- stringr::str_to_lower(ADJUSTED_DATA_DF$meta_construct_ori)
