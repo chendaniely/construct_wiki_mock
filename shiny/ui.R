@@ -22,10 +22,10 @@ dashboardPage(
                                     visNetworkOutput("vis_network", width = "100%", height = "800px")),
                              column(2,
                                     radioButtons("radio_data", label = 'Dataset',
-                                                 choices = list("Adjusted" = ADJUSTED_DATA,
-                                                                "Original" = ORIGINAL_DATA
+                                                 choices = list("Adjusted" = .GlobalEnv$ADJUSTED_DATA,
+                                                                "Original" = .GlobalEnv$ORIGINAL_DATA
                                                  ),
-                                                 selected = ADJUSTED_DATA
+                                                 selected = .GlobalEnv$ADJUSTED_DATA
                                     ),
                                     p(paste(
                                         "You can click the edit button to modify and explore the network directly (without)",
