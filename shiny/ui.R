@@ -14,7 +14,8 @@ dashboardPage(
                                      sep = ' ')),
                              p(paste("Hovering over a node will display the definition of the construct",
                                      sep = ' ')),
-                             p("Multiple edges refer to multiple definitions for the construct")
+                             p("Multiple edges refer to multiple definitions for the construct"),
+                             p("Zoom in to see the labels.")
                          ),
                          fluidRow(
                              column(10,
