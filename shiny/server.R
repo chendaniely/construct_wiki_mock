@@ -55,24 +55,36 @@ shinyServer(function(input, output, session) {
         selectizeInput('construct_name', 'Construct Name', sort(construct_values()))
     })
 
-    output$construct_definition <- renderUI({
-        # md_text <- .GlobalEnv$parse_md_a('[A document](https://drive.google.com/open?id=0B7onm2yXv1-wX2FJVkxVUUZ3a2c)')
-        # print(sprintf('selected: %s', input$construct_name))
+    construct_row_dat <- reactive({
         construct_row_dat <- constructs()[constructs()$construct == input$construct_name, ]
-
-        def_count_text <- if_else(nrow(construct_row_dat) == 1,
-                                  sprintf("There is %s definition for this construct", nrow(construct_row_dat)),
-                                  sprintf("There are %s definitions for this construct", nrow(construct_row_dat)))
-
-        # .GlobalEnv$def_meta_boxes(construct_row_dat, def_count_text)
-
+        print(construct_row_dat)
+        return(construct_row_dat)
     })
+
+    num_defs <- reactive({
+        ndefs <- nrow(construct_row_dat)
+        print(ndefs)
+        return(ndefs)
+    })
+
+    output$construct_definition_dt <- DT::renderDataTable({
+        construct_row_dat()[, c('definition', 'field', 'military', 'population', 'measurement', 'instrument', 'notes')]
+    },
+    extensions = c('Responsive', 'Buttons'),
+    options = list(pageLength = num_defs(),
+                   #lengthMenu = c(5, 10, 15, 20, 50, 100, nrow(.GlobalEnv$constructs())),
+                   colReorder = TRUE,
+                   fixedHeader = TRUE,
+                   dom = 'Bt'
+    )
+    )
 
     output$construct_dt <- DT::renderDataTable({
         constructs()
-    }, options = list(pageLength = nrow(.GlobalEnv$constructs()),
-                      lengthMenu = c(5, 10, 15, 20, 50, 100, nrow(.GlobalEnv$constructs())),
-                      colReorder = TRUE,
-                      fixedHeader = TRUE,
-                      extensions = 'Responsive'))
+    },
+    extensions = 'Responsive',
+    options = list(pageLength = num_defs(),
+                   lengthMenu = c(5, 10, 15, 20, 50, 100, num_defs()),
+                   colReorder = TRUE,
+                   fixedHeader = TRUE))
 })

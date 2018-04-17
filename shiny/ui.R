@@ -43,7 +43,7 @@ dashboardPage(
                      p(paste("Here you can select a specific construct and see the definition and more details.",
                              sep = ' ')),
                      uiOutput('construction_selection'),
-                     uiOutput('construct_definition')
+                     DT::dataTableOutput('construct_definition_dt')
             ),
             tabPanel("Data",
                      DT::dataTableOutput('construct_dt')
